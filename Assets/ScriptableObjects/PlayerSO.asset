@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121eadb6fc11f1f47a6d68082361efa4, type: 3}
+  m_Name: PlayerSO
+  m_EditorClassIdentifier: 
+  _lives: 3
+  _speed: 12.5
+  _score: 0
+  _laserSpawnOffset: {x: 0, y: 1, z: 0}
+  _laserPrefab: {fileID: 4387953320989839687, guid: 7ecbddc44abcabc4b9741352820fbded, type: 3}
+  _tripleShotLaserPrefab: {fileID: 3853783297687695206, guid: cb0b362ee25c5724bab2fe1fcf8b95c9, type: 3}
+  _shieldPrefab: {fileID: 8456282115510249163, guid: fed8cf6a363d2c7469a0d02dc94e5394, type: 3}
