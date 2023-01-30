@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6472196346343475823}
   - component: {fileID: 7683486115132649125}
   - component: {fileID: 7405078168791093465}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thruster1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 1510369012203800925}
   - component: {fileID: 8538581195040655463}
   - component: {fileID: 7331915927146020730}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -258,7 +258,6 @@ MonoBehaviour:
   _explosionPrefab: {fileID: 2260311741702362046, guid: d0e927ff3c8c03e4087e68bdcfa4fc10, type: 3}
   _laserPrefab: {fileID: 3160693842695325988, guid: 87e86a846e9a8374d9c1a3cb80494c6b, type: 3}
   _fireRate: 5
-  _laserSpawnOffset: {x: 0, y: -1, z: 0}
 --- !u!1 &7357396111908556948
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +269,7 @@ GameObject:
   - component: {fileID: 7557768958567701977}
   - component: {fileID: 435159581413584368}
   - component: {fileID: 1327430447803725172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thruster2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

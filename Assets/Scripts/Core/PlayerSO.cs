@@ -82,6 +82,7 @@ namespace GalaxyShooter.Core
             _isTripleShotEnabled = false;
             _score = 0;
             _speed = 12.5f;
+            _lives = 3;
         }
 
         #endregion

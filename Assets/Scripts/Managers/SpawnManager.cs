@@ -18,7 +18,7 @@ namespace GalaxyShooter.Managers
         [SerializeField] private float _enemySpawnDelay;
         [SerializeField] private float _powerUpSpawnDelay;
 
-        private bool _spawnItems = true;
+        private bool _spawnItems = false;
 
         #endregion
 
@@ -26,26 +26,35 @@ namespace GalaxyShooter.Managers
 
         private void OnEnable()
         {
-            GameManager.OnGameStateChanged += SpawnEnemy;
-            GameManager.OnGameStateChanged += SpawnPowerUps;
+            GameManager.OnGameStateChanged += SpawnItems;
         }
 
         private void OnDisable()
         {
-            GameManager.OnGameStateChanged -= SpawnEnemy;
-            GameManager.OnGameStateChanged -= SpawnPowerUps;
+            GameManager.OnGameStateChanged -= SpawnItems;
         }
 
         #endregion
 
         #region Spawn Behaviour
 
-        private void SpawnEnemy(GameManager.GameState gameState)
+        private void SpawnItems(GameManager.GameState gameState)
         {
-            StartCoroutine(SpawnEnemyRoutine());
+            if (gameState is GameManager.GameState.GameStart or GameManager.GameState.Continue)
+            {
+                _spawnItems = true;
+                StartCoroutine(SpawnEnemyRoutine());
+                StartCoroutine(SpawnPowerUps());
+            }
+            else
+            {
+                _spawnItems = false;
+                StopCoroutine(SpawnEnemyRoutine());
+                StopCoroutine(SpawnPowerUps());
+            }
         }
-        
-        IEnumerator SpawnEnemyRoutine()
+
+        private IEnumerator SpawnEnemyRoutine()
         {
             while (_spawnItems)
             {
@@ -58,12 +67,7 @@ namespace GalaxyShooter.Managers
             }
         }
 
-        private void SpawnPowerUps(GameManager.GameState gameState)
-        {
-            StartCoroutine(SpawnPowerUps());
-        }
-
-        IEnumerator SpawnPowerUps()
+        private IEnumerator SpawnPowerUps()
         {
             while (_spawnItems)
             {
@@ -74,11 +78,6 @@ namespace GalaxyShooter.Managers
                 GameObject tripleShot = Instantiate(_powerUpPrefabs[powerUpID], spawnPosition, Quaternion.identity);
                 tripleShot.transform.parent = transform;
             }
-        }
-
-        private void SpawnItems(GameManager.GameState gameState)
-        {
-            _spawnItems = (gameState == GameManager.GameState.Start);
         }
 
         #endregion

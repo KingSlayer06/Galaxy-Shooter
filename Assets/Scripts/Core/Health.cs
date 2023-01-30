@@ -20,7 +20,7 @@ namespace GalaxyShooter.Core
 
         private void ResetHealth(GameManager.GameState gameState)
         {
-            if (gameState == GameManager.GameState.Start)
+            if (gameState == GameManager.GameState.GameStart)
                 _playerSO.Lives = _maxLives;
         }
 
@@ -34,10 +34,11 @@ namespace GalaxyShooter.Core
 
             if (_playerSO.Lives == 0)
             {
-                GameManager.Instance.UpdateGameState(GameManager.GameState.End);
                 GameManager.Instance.audioManager.PlaySound("explosion");
                 Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
+                
+                GameManager.Instance.UpdateGameState(GameManager.GameState.GameOver);
             }
         }
     }

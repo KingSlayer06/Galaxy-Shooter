@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lives: 3
   _speed: 12.5
-  _score: 0
+  _score: 10
   _laserSpawnOffset: {x: 0, y: 1, z: 0}
   _laserPrefab: {fileID: 4387953320989839687, guid: 7ecbddc44abcabc4b9741352820fbded, type: 3}
   _tripleShotLaserPrefab: {fileID: 3853783297687695206, guid: cb0b362ee25c5724bab2fe1fcf8b95c9, type: 3}

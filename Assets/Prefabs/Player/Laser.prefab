@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6459912206416659887}
   - component: {fileID: -5772339825741552997}
   - component: {fileID: -351212897460179860}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Laser
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -147,5 +147,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _direction: {x: 0, y: 1, z: 0}
-  _destroyBound: 8

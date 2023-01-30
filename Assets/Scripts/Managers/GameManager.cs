@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using GalaxyShooter.Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 
 namespace GalaxyShooter.Managers
@@ -12,7 +13,7 @@ namespace GalaxyShooter.Managers
 
         public static GameManager Instance;
 
-        public enum GameState { Start, End }
+        public enum GameState { MainMenu ,GameStart, GamePause, Continue, GameOver, Retry, Quit }
         public static event Action<GameState> OnGameStateChanged;
 
         [SerializeField] private GameObject _playerPrefab;
@@ -35,15 +36,7 @@ namespace GalaxyShooter.Managers
 
         private void Start()
         {
-            UpdateGameState(GameState.Start);
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-                OnGameRestart();
-            if (Input.GetKeyDown(KeyCode.Q))
-                OnGameQuit();
+            UpdateGameState(GameState.MainMenu);
         }
 
         public void UpdateGameState(GameState gameState)
@@ -52,12 +45,33 @@ namespace GalaxyShooter.Managers
 
             switch (gameState)
             {
-                case GameState.Start:
+                case GameState.MainMenu:
+                    Debug.Log("Main Menu");
+                    OnGameMenu();
+                    break;
+                case GameState.GameStart:
                     Debug.Log("Game Start");
                     OnGameStart();
                     break;
-                case GameState.End:
-                    Debug.Log("Game End");
+                case GameState.GamePause:
+                    Debug.Log("Game Paused");
+                    OnGamePause();
+                    break;
+                case GameState.Continue:
+                    Debug.Log("Game Continue");
+                    OnGameContinue();
+                    break;
+                case GameState.GameOver:
+                    Debug.Log("Game Over");
+                    OnGameOver();
+                    break;
+                case GameState.Retry:
+                    Debug.Log("Game Retry");
+                    OnGameRetry();
+                    break;
+                case GameState.Quit:
+                    Debug.Log("Game Quit");
+                    OnGameQuit();
                     break;
                 default:
                     return;
@@ -70,23 +84,42 @@ namespace GalaxyShooter.Managers
 
         #region GameState Callbacks
 
-        private void OnGameStart()
+        private void OnGameMenu()
         {
-            if (_player == null)
-                _player = Instantiate(_playerPrefab, transform.position, Quaternion.identity);
             
-            //_audioManager.PlayBackgroundMusic();
         }
 
-        private void OnGameRestart()
+        private void OnGameStart()
         {
-            UpdateGameState(GameState.Start);
+            Time.timeScale = 1;
+            if (_player == null)
+                _player = Instantiate(_playerPrefab, transform.position, Quaternion.identity);
+        }
+
+        private void OnGamePause()
+        {
+            Time.timeScale = 0;
+        }
+
+        private void OnGameContinue()
+        {
+            Time.timeScale = 1;
+        }
+
+        private void OnGameOver()
+        {
+            Time.timeScale = 0;
+        }
+
+        private void OnGameRetry()
+        {
+            Time.timeScale = 1;
+            UpdateGameState(GameState.GameStart);
         }
 
         private void OnGameQuit()
         {
-            UpdateGameState(GameState.End);
-            //_audioManager.StopBackgroundMusic();
+            Application.Quit();
         }
 
         #endregion

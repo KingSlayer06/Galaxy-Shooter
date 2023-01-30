@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7320397967267699279}
   - component: {fileID: 8278077667670061714}
   - component: {fileID: 5467608803947092972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1044836763426005911}
   - component: {fileID: 1418849436693078999}
   - component: {fileID: 6986311093517864726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Thruster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 8766542559555152959}
   - component: {fileID: 6368638311445161140}
   - component: {fileID: 8891316310498418292}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 8191978088750825513}
   - component: {fileID: 8191978088750825512}
   - component: {fileID: -1387296540419854586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3385494254638624497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

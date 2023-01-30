@@ -27,7 +27,7 @@ namespace GalaxyShooter.Managers
 
         public void PlayBackgroundMusic(GameManager.GameState gameState)
         {
-            if (gameState == GameManager.GameState.Start)
+            if (gameState is GameManager.GameState.GameStart or GameManager.GameState.Continue)
             {
                 _musicSFX.clip = _soundsSO.BackgroundMusic;
                 _musicSFX.loop = true;
@@ -52,6 +52,16 @@ namespace GalaxyShooter.Managers
                 default:
                     return;
             }
+        }
+
+        public void SetMusicVolume(float value)
+        {
+            _musicSFX.volume = value;
+        }
+        
+        public void SetSfxVolume(float value)
+        {
+            _SoundSFX.volume = value;
         }
 
         #endregion
