@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,7 +13,6 @@ namespace GalaxyShooter.Core
 
         [SerializeField] private PlayerSO _playerSO;
         [SerializeField] private float _fireRate = 0.15f;
-        
 
         private PlayerInputActions _playerInputActions;
         private GameObject _spawnManager;
@@ -48,25 +48,16 @@ namespace GalaxyShooter.Core
         {
             Vector2 direction = _playerInputActions.Player.Movement.ReadValue<Vector2>();
             transform.Translate(direction * (_playerSO.Speed * Time.deltaTime));
-
-            MovementBounds();
+        }
+        
+        private void OnBecameInvisible()
+        {
+            transform.position = -transform.position;
         }
 
         #endregion
 
         #region Player Behaviour
-
-        private void MovementBounds()
-        {
-            // Clamp y-axis of the player
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y,-3f, 0f));
-
-            // wrap x-axis of the player
-            if (transform.position.x >= 9.5f)
-                transform.position = new Vector3(-9.5f, transform.position.y, 0);
-            else if (transform.position.x <= -9.5f)
-                transform.position = new Vector3(9.5f, transform.position.y, 0);
-        }
 
         private void Shoot(InputAction.CallbackContext callbackContext)
         {
