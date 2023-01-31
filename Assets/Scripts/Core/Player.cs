@@ -48,6 +48,9 @@ namespace GalaxyShooter.Core
         {
             Vector2 direction = _playerInputActions.Player.Movement.ReadValue<Vector2>();
             transform.Translate(direction * (_playerSO.Speed * Time.deltaTime));
+            
+            // Clamp y-axis of the player
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y,-3f, 0f));
         }
         
         private void OnBecameInvisible()
